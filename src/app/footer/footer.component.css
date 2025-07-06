@@ -1,0 +1,26 @@
+/* Footer Styles */
+.footer {
+  background-color: #031605;  /* Dark green background color */
+  color: #C9E465;  /* Light green text color */
+  padding: 15px 0;  /* Padding for spacing */
+  position: fixed;  /* Make footer stick at the bottom */
+  bottom: 0;  /* Position at the bottom */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto Mono', Consolas, 'Courier New', monospace;  /* Custom font */
+  height: 8%;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  color: #C9E465;  /* Light green text color */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 576px) {
+  .footer {
+    font-size: 0.9rem;
+  }
+}

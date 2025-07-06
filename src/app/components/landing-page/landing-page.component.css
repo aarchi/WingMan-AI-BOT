@@ -1,0 +1,57 @@
+/* Custom background color for the landing page */
+.bg-custom {
+  background-color: #031605;  /* Dark green background color */
+  height: 1000px;
+}
+
+form {
+  background-color: #1a2d1b; /* Slightly lighter background for the form */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2.0rem;  /* Increased font size */
+  color: #C9E465;
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  margin-bottom: 30px; /* Add space below heading */
+}
+
+label, .form-check-label {
+  font-family: 'Roboto Mono', Consolas, 'Courier New', monospace;
+  color: #C9E465;
+}
+
+select, .form-control, .form-control-file {
+  font-family: 'Roboto Mono', Consolas, 'Courier New', monospace;
+  background-color: #1a2d1b;
+  color: #C9E465;
+  border: 1px solid #C9E465;
+  border-radius: 5px;
+}
+
+select:focus, .form-control:focus {
+  background-color: #1a2d1b;
+  border-color: #C9E465;
+  color: #C9E465;
+}
+
+.form-check-input {
+  background-color: #031605;
+  border: 1px solid #C9E465;
+}
+
+button {
+  background-color: #C9E465;
+  color: #031605;
+  font-family: 'Roboto Mono', Consolas, 'Courier New', monospace;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #a8c73a; /* Slightly darker green */
+}

@@ -1,0 +1,147 @@
+<!-- src/app/components/bot/bot.component.html -->
+<div class="bg-custom py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+
+ <!-- Back button -->
+ <a href="/" class="back-button-icon mb-3 d-block">
+   <i class="fas fa-arrow-left"></i>
+ </a>
+ <!-- Back button with confirmation -->
+ <a href="#"
+    class="back-button-icon mb-3 d-block"
+    (click)="onBack($event)">
+   <i class="fas fa-arrow-left"></i>
+</a>
+
+
+        <!-- Main video + audio player -->
+        <div class="media-player mb-4">
+          <div class="avatar-container position-relative">
+            <video
+              #avatarVideo
+              class="avatar-video w-100"
+              muted
+              loop
+              preload="auto"
+            >
+              <source src="bot.mp4" type="video/mp4" />
+            </video>
+            <div class="audio-trackbar-overlay position-absolute w-100 bottom-0">
+              <input
+                type="range"
+                [min]="0"
+                [max]="duration"
+                [value]="currentTime"
+                step="0.1"
+                (input)="onSeek($event)"
+                class="w-100"
+              />
+              <div class="time-display text-center mt-1">
+                {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Control buttons for main player -->
+          <div class="audio-controls mt-3 text-center">
+            <ng-container *ngIf="isLoading; else controlButtons">
+              <span class="loader"></span>
+            </ng-container>
+            <ng-template #controlButtons>
+              <button
+                class="control-btn play me-2"
+                (click)="play()"
+                [disabled]="isLoading"
+              >
+                <i class="fas fa-play"></i>
+              </button>
+              <button
+                class="control-btn pause me-2"
+                (click)="pause()"
+                [disabled]="isLoading"
+              >
+                <i class="fas fa-pause"></i>
+              </button>
+              <button
+                class="control-btn reset"
+                (click)="reset()"
+                [disabled]="isLoading"
+              >
+                <i class="fas fa-stop"></i>
+              </button>
+            </ng-template>
+          </div>
+        </div>
+
+<!-- Chat window -->
+<div class="chatbox-container">
+  <div class="chatbox">
+    <div class="messages">
+      <div
+        *ngFor="let msg of chatHistory; let i = index"
+        class="message-row"
+        [ngClass]="msg.who === 'user' ? 'align-end' : 'align-start'"
+      >
+        <div
+          class="message-bubble"
+          [class.user]="msg.who === 'user'"
+          [class.bot]="msg.who === 'bot'"
+        >
+          <button
+            class="audio-btn"
+            (click)="togglePlay(i)"
+            [class.playing]="playingIndex === i"
+            [disabled]="!msg.audioUrl"
+          >
+            <i
+              class="fas"
+              [ngClass]="
+                playingIndex === i ? 'fa-pause-circle' : 'fa-play-circle'
+              "
+            ></i>
+          </button>
+          <span class="message-text">{{ msg.text }}</span>
+          <audio #audioPlayers [src]="msg.audioUrl"></audio>
+        </div>
+      </div>
+    </div>
+
+
+
+            <!-- Input + Send button -->
+            <div class="input-area d-flex mt-3">
+              <input
+                type="text"
+                name="userMessage"
+                class="form-control me-2"
+                placeholder="Type your message..."
+                [(ngModel)]="userMessage"
+                [ngModelOptions]="{ standalone: true }"
+                [disabled]="isLoading2"
+              />
+              <button
+                class="btn btn-primary"
+                (click)="onSend()"
+                [disabled]="isLoading2 || !userMessage.trim()"
+              >
+                Send
+              </button>
+            </div>
+
+            <!-- Loading overlay -->
+            <div
+              *ngIf="isLoading2"
+              class="loading-overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center"
+              style="background: rgba(255, 255, 255, 0.6);"
+            >
+              <span class="loader2"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

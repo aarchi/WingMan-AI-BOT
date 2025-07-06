@@ -1,0 +1,89 @@
+<div class="bg-custom py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <!-- Form container with the heading inside -->
+        <form (ngSubmit)="onSubmit()" id="ktForm">
+          <!-- Heading inside the form -->
+          <h2 class="text-center text-light mb-4">Provide Information for Knowledge Transfer</h2>
+
+<!-- Dropdown to select application -->
+<div class="form-group">
+  <label for="application" class="text-light">Select Application</label>
+  <select id="application" class="form-control" name="application" [(ngModel)]="selectedApplication" (change)="onDropdownChange()" [disabled]="isDropdownDisabled">
+    <option value="">-- Select an Application --</option>
+    <option *ngFor="let app of appList" [value]="app.name">{{ app.name }}</option>
+  </select>
+</div>
+
+
+
+          <!-- File upload option -->
+          <div class="form-group">
+            <label for="fileUpload" class="text-light">Or Upload a File</label>
+            <input type="file" class="form-control-file" id="fileUpload" (change)="onFileSelect($event)" [disabled]="isFileInputDisabled" accept=".pdf, .doc, .docx" required>
+            <small class="text-muted">Accepted formats: .pdf, .doc, .docx, txt</small>
+          </div>
+
+        <!-- Role selection with new creative options -->
+<div class="form-group">
+  <label class="text-light">Select Explanation Mode</label>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="presentationMode" name="role" value="presentationMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="presentationMode">Professional Presentation (Organized, structured flow)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="summarizeMode" name="role" value="summarizeMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="summarizeMode">Summary Mode (Concise, easy-to-understand summary)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="explainTechnically" name="role" value="explainTechnically" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="explainTechnically">Technical Explanation (In-depth with technical details)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="explainToStudent" name="role" value="explainToStudent" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="explainToStudent">Student Mode (Simplified, relatable examples)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="creativeMode" name="role" value="creativeMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="creativeMode">Creative Mode (Fun, imaginative explanation)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="askQuestionsMode" name="role" value="askQuestionsMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="askQuestionsMode">Question Mode (Thought-provoking questions for deeper understanding)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="reviewCritiqueMode" name="role" value="reviewCritiqueMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="reviewCritiqueMode">Review & Critique (Detailed feedback on strengths and weaknesses)</label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="shortenMode" name="role" value="shortenMode" (change)="onRoleSelect()" [(ngModel)]="selectedRole">
+    <label class="form-check-label text-light" for="shortenMode">Shorten Mode (Condensed version with only key points)</label>
+  </div>
+</div>
+
+
+
+          <!-- Submit and Reset Buttons aligned side by side -->
+          <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary"
+        [disabled]="!(isDropdownSelected || isFileUploaded) || !isRoleSelected">
+  Submit
+</button>
+
+
+            <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

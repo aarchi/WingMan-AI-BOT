@@ -1,0 +1,46 @@
+/* Custom background color for the header */
+.bg-custom {
+  background-color: #031605;  /* Dark green background color */
+}
+
+header .logo img {
+  max-width: 150px;  /* Adjust logo size */
+  height: auto;
+  display: inline-block;  /* Ensures the logo is inline with the heading */
+}
+
+/* Main Heading - WINGMAN */
+header h1 {
+  font-size: 5rem;  /* Font size for the header */
+  color: #C9E465 !important;   /* Light green color */
+  font-weight: bold; /* Bold font weight */
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; /* Modern, clean system font */
+}
+
+/* Slogan Styling */
+header .slogan {
+  font-size: 1.5rem;  /* Font size for slogan */
+  color: #C9E465 !important;     /* Slogan color */
+  font-weight: normal;   /* Normal font weight */
+  font-family: 'Roboto Mono', Consolas, 'Courier New', monospace !important; /* Robotic feel */
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 4rem;  /* Reduce font size on smaller screens */
+  }
+
+  header .slogan {
+    font-size: 1.2rem;   /* Reduce slogan font size on smaller screens */
+  }
+
+  header .logo {
+    max-width: 130px; /* Adjust logo size on medium screens */
+  }
+}
+
+@media (max-width: 576px) {
+  header .logo {
+    max-width: 120px;  /* Further adjust logo size on very small screens */
+  }
+}
