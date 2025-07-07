@@ -8,7 +8,7 @@ export const environment = {
   gptUrl: 'https://api.openai.com/v1/chat/completions',
 
   // (Optional) If you really must call OpenAI directly in dev:
-  gptApiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+  gptApiKey: 'xxxxxxxxxxxxxxxxxxxxxxx',
 
   // Your STT endpoint
   ttsUrl: 'http://localhost:5001/tts',
@@ -16,4 +16,6 @@ export const environment = {
   // (Optional) Same caveat as above:
   ttsApiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxx',
   ttsRegion: 'centralindia',
+
+  serverUrl: 'http://localhost:5001'
 };
